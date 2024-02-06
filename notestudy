@@ -1,0 +1,347 @@
+2. 	Which roles may be used to administrate MongoDB databases?
+Ans:
+Root, Read, readWrite, dbAdmin, userAdmin, backup, restore
+But if there is one selection choose ( dbOwner)
+ 
+3. 	What is the command to show a list of all MongoDB databases?
+           		Ans: show dbs
+
+6. 	Within a MongoDB find command we need to start the result list with document number 31. Which MongoDB method call could be used to achieve this?
+Ans: db.yourCollection.find().skip(30).limit(1)
+
+7. 	In MongoDB collection "phonenumbers" phone numbers are stored with...
+8. 	What is the command to change the title of a MongoDB document within.
+
+9. 	How scale MongoDB datastores?
+Ans:Horizontal scaling features
+
+10.  In MongoDB collection "phonenumbers" phone numbers are stored with…
+
+11.  In MongoDB collection "phonenumbers" phone numbers are stored without area code in field "phonenumber”
+
+12.  We need a MongoDB user "siteUserAdmin" with role "userAdminAnyDatabase" and password "nosql"
+Ans: db.createUser({
+  user: "siteUserAdmin",
+  pwd: "nosql",
+  roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
+})
+
+13.  Of which type are MongoDB datastores?
+MongoDB datastores are of the NoSQL type
+It stores data in flexible, JSON-like documents, making it well-suited for a wide range of applications, including those with rapidly evolving schemas or complex data structures.
+
+14.  What is the MongoDB method db.COLLECTION_NAME.update(document) made for?
+Ans: The `db.COLLECTION_NAME.update(document)` method in MongoDB is used to update documents within a collection.
+
+15.  What is the command to show a list of all MongoDB documents within a collection that show in field "key1".
+Ans: db.collection.find({ "key1": { $exists: true } })
+
+16.  What is the command to change the title of a MongoDB document within a collection from "Doc1" to "newDoc"?
+Ans: db.col.update({'title':'Doc1'},{$set:{'title':'newDoc'}})
+
+17.  Which command can be used to sort the search result of a find command with alphabetically descendant "t
+
+18.  How scale MongoDB datastores?
+Ans: Horizontal Scale
+
+19.  Which statement is true?
+Ans: All mongorestore operations are inserts, not updates.
+
+20.  Which features supports MongoDB?
+Ans:
+Document-Oriented Storage
+Full Index Support
+Replication & High Availablity
+Auto-Sharding (Auto-Splitting)
+Querying
+Fast In-Place Updates
+Map / Reduce
+GridFS
+MongoDB Management Service (MMS)
+Production Support
+
+21.  Which correspondences are true?
+Ans: A collection within a MongoDB database corresponds to an RDBMS table.
+
+29.  Which statement is true for role "root" on a MongoDB datastore.
+Ans: Role "root" includes roles "readWriteAnyDatabase" and "userAdminAnyDatabase".
+30.  In MongoDB collection "phonenumbers" phone numbers are stored without area code in field "phonenumber". Which command can be used to display all phone numbers in range [250;490| ? Complete the following template.
+Ans:  var number_range = {} 
+number_range['$gte'] = 250 
+number_range['$lte'] = 490 
+db.PhoneNumbers.find({ phonenumber: number_range }
+ 
+According to chatgpt
+var number_range = { $gte: 250, $lte: 490 };
+
+db.phones.find(
+  { "phonenumber": number_range },
+  { "_id": 0, "phonenumber": 1 }
+)
+
+Format given
+var number_range = ( l
+number_range l' '1=250
+number _rangel' '1=490
+db- phones. find( () )
+
+31.  In MongoDB collection "phonenumbers" phone numbers are stored without area code in field "phonenumber". Which command can be used to display all phone numbers ending on "50" in descending order? Complete the following template.
+Ans:db.phonenumbers.find(
+{“phonenumber”:/50$/}
+).sort(
+{“phonenumber”:-1 }
+)
+
+33.  We need a MongoDB user "siteUserAdmin" with role "userAdminAnyDatabase" and password "nosql". Which command can be used to create this user? Complete the following template.
+Ans:
+db.createUser(
+  {
+	user: "siteUserAdmin",
+	pwd: "nosql",
+	roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+
+34.  What is the command to show a list of all MongoDB documents within a collection named "books" that show
+
+35.  What is the command to delete all MongoDB documents from collection articles?
+Ans: db.articles.deleteMany({})
+
+36.  MongoDB collection "films" holds a couple documents with fields "title", "actors" und "_id". You need all documents showing only fields "title" and "actors". What is the command to show this list?
+Ans:db.films.find({}, { "title": 1, "actors": 1, "_id": 0 })
+
+37.  Within a MongoDB find command we need to limit the number of search results to 10 documents. Which MongoDB method call could be used to achieve this?
+Ans: db.collection.find().limit(10)
+
+38.  Within a MongoDB find command we need to start the result list with document number 31. Which mongoDB method call could be used to achieve this?
+ Ans: var document31 = db.collection.find().skip(30).limit(1);
+OR
+{<key>: {$gte: 31}}
+
+39.  In MongoDB collection “phonenumbers” phone numbers are stored without area code in field “phonenumber”. Which command can be used to display all phone numbers that start with digits 21, followed by an arbitrary number of digits and ending in digit 9?
+ Ans: db.phonenumbers.find({phonenumber:/^21(.*)9$/})
+
+40.  What is the command to show all documents within a MongoDB collection named "books*?
+Ans: db.books.find()
+
+41.  What is the command to create an alphabetically descending index over field "title" within a MongoDB collection named "articles"?
+Ans: db.articles.createIndex({"title": -1})
+
+42.  Which role needs a MongoDB operator at least, if his task is to store a dump of all MongoDB databas Q
+
+43.  On which system database a MongoDB operator need access, if she/he has to backup all MongoDB databases including users and user-defined roles?
+Ans: root
+
+44.  A MongoDB operator has to store a backup of all MongoDB databases in directory /opt/backup. His c a
+
+45.  A MongoDB operator has to restore a backup of collection "mycol" in database "targetDB" from a dumb in directory dumb.
+Ans: mongorestore --collection myCol --db targetDB dump/oldDBdump
+
+46.  Which command can be used to sort the search result of a find command with alphabetically descendant "title" field.
+Ans. db.col.find({},{"title":1,_id:0}).sort({"title":-1})
+
+52.  Which steps are necessary to create a new persistent MongoDB database named *db2018*?
+Select one or more: (green one is correct)
+Create the database using command "created db2018"|
+Insert one document using command "db.insert(document)"
+Insert one document in a collection using command "db.COLLECTION_NAME.insert(document)"
+Change to the database using command "use db2018"
+
+53.  Which of the following parameters are options when creating a MongoDB collection?
+
+57.  What is the command to show a list of all MongoDB documents within a collection named "books" that show in field "likes" an integer value inferior to 50?
+Ans: db.books.find( { "likes": { $gt: 50} } )
+
+58.  Which correspondences are true?
+Ans: A row within a RDBMS databases' table corresponds to a MongoDB collection.
+
+A collection within a MongoD database corresponds to a RDBMS table.
+59.  What is the command to show a list of all MongoDB documents within a collection that show in field "key1" value "v1" and in field "key2" value "v2"?
+
+Ans: db.col.find( { $and: [ {key1: v1}, {key2:v2} ] } )
+
+60.  Of which type are MongoDB datastores?
+Ans: document-oriented
+
+61.  Which command can be used to sort the search result of a find command with alphabetically descendant "title" field.
+Select one:
+db.col.find(0-["title":1,_id:0},sort({"title":-1})])
+db.col.find(0.("title": 1,_id:0}).sort(["title":-1})
+Ans: db.col.find({}, {"title": 1, _id: 0}).sort({"title": -1})
+
+64.  Which statement is true?
+Select one:
+Mongorestore inserts all indices stored in a backup.
+All mongorestore operations are updates, not inserts.
+All mongorestore operations are inserts, not updates.
+Ans: Mongorestore inserts all indices stored in a backup.
+
+65.  What is the command to show a list of all MongoDB documents within a collection named "docs" that show in field "likes" an integer value superior to 50?
+Ans: db.docs.find({ "likes": { $gt: 50 } })
+
+66.  You are working in a MondB version 6. What is the command to create an alphabetically descending index over the key "title" within a MongoDB collection named "articles"?
+Ans: db.articles.createIndex({ "title": -1 })
+
+67.  Within a MongoDB find command we need to start the result list with document number 31. Which MongoDB method call could be used to achieve this?
+Ans:  To start the result list with document number 31 in a MongoDB find command, you can use the skip() method along with the limit() method.
+Command: db.collection.find().skip(30).limit(1)
+
+
+
+
+
+ 
+
+
+Redis DB
+
+1.	Of which type are Redis datastores?
+Ans : key-value stores
+
+3.	What is the outcome of Redis command ,,RPOPLPUSH L1 L2" ?
+Ans:
+RPOPLPUSH L1 L2 in Redis takes the last element from list L1 and shoves it to the front of list L2. It's like moving the caboose of a train to the engine of another train.
+
+If L1 is empty: Nothing happens.
+If L1 has elements:
+It removes the last element from L1.
+It adds that element to the beginning of L2.
+Remember, it returns the removed element so you can use it if needed.
+
+4.	How scale Redis datastores?
+Ans : Vertical scaling
+
+5.	Which of the following features are supported by Redis?
+Ans: In-Memory Datastore, Complex Data Structures, LRUScripting, Complex document structures 
+
+6.	What is the default port for connecting to a redis server?
+Ans: 6379
+
+7.	You are connected to a Redis server. How can you store the list elements L1 and L2 at once in list myList?
+Ans : RPUSH myList L1 L2
+
+8.	In your REDIS datastore you have to set key "myKey" to value "25". How can we do that?
+Ans : SET mykey 25
+
+9.	Someone said that number of students at Hof University is stored in our REDIS datastore under key "numberOfStudents". How can you retrieve the actual value?
+Ans: GET numberOfStudents
+
+10.	Which REDIS command can be used to increment key "numberOfStudents" by 1?
+Ans : INCR numberOfStudents 
+
+11.	With which REDIS command starts a REDIS transaction?
+Ans: MULTI
+
+12.	With which REDIS command ends a REDIS transaction?
+Ans : EXEC
+
+13.	Which REDIS command can be used to retrieve the length of list user25:favorites?
+Ans: LLEN user25:favorites
+
+14.	In your REDIS server you want to add elements "A" and "B" to set "letters". Give an appropriate REDIS command.
+Ans : SADD letters A SADD letters B 
+or 
+SADD letters A B
+
+15.	How can we display the intersection of set A and B stored in a REDIS datastore?
+Ans: SINTER A B
+
+16.	Within a REDIS datastore sets A and B are stored. Which REDIS command can be used to store the union of A and B in set C?
+Ans :  SUNIONSTORE C A B
+
+17.	You have to authenticate to enter your securized REDIS datastore. Which REDIS command do you see if your password is "asdf" ?
+ Ans: AUTH asdf
+
+18.	In a REDIS datastore, how can one increment key "mykey" by 5?
+Ans : INCRBY mykey 5 
+
+19.	To get the length of string "lastname" stored in a REDIS datastore, you have to use which command?
+Ans: STRLEN lastname
+
+20.	Given is a stored set representing a geospatial index in a REDIS datastore, populated using the following GEOADD command:
+GEOADD Sicily 13.361389 38.115556 “Palermo” 15.087269 37.502669 “Catania”
+Which command returns the distance between “Palermo” and “Catania” in units of “km” ?
+Ans : GEODIST Palermo Catania km
+
+
+21.	What is the full path to the Redis system configuration file on a Ubuntu 16.04 system? Hint: Your answer starts with the directory path and ends with the configuration filename, e.g. /var/lib/REDIS.cfg
+Ans : /etc/redis/redis.conf
+
+22.	On a Ubuntu 16.04 server system, there is a command line tool that may be used to display the status of the Redis server. Give the complete command with all parameters necessary.
+Ans : redis-cli-h <hostname>-p <port> ping
+
+
+23.	Which command can be used to start the redis client on port 9900?
+Ans : redis-cli -p 9900 
+
+24.	You are connected to a Redis server. How can you store the key pair k1 / v1 and k2 / v2 at once?
+Ans : MSET k1 v1 k2 v2
+
+25.	You are connected to a Redis server. How can you display the value of hash h27?
+Ans : HVALS h27 or HGETALL h27
+
+26.	REDIS datastores permit storing bitmaps and hyperlogs.
+Ans: True
+
+27.	A REDIS datastore is inappropriate for message broker applications.
+Ans: False
+
+28.	In your REDIS datastore you have to get key "likes". How can we do that?
+Ans: GET likes or SMEMBERS likes or HGETALL likes
+
+29.	To get the length of string "firstname" stored in a REDIS datastore, you have to use which command?
+Ans: STRLEN firstname
+
+Influx DB
+
+1.       Suppose you are using InfluxDB CLI and you changed already to database "telegraf". Which command may now be used to display a list of the first three lines of measurement "runtime"?
+Ans: SELECT * FROM runtime limit 3
+ 
+2.       Suppose you are using InfluxDB CLI and you want to load file "data.txt" from the current working directory to InfluxDB database "mydb" with data timestamps with precision "seconds". Which CLI command would solve the problem?
+   	Ans: Influx -import -path=data.txt -database=mydb -precision=s
+3.       What must the projection part of an InfluxDB select statement look like, if you want to display all fields but no tags of a given measurement regardless of the where clause?
+Ans: select *::field
+4.       What is the DML influxdb command to create a new database with name "mydb"?
+Ans: CREATE DATABASE mydb
+5.       Which statement may be used to display all existing influx databases within the influx CLI?
+Ans: show databases
+6.       You may explicitly name the database with each query to influxdb, but the CLI provides a convenience statement, which will automatically set the database for all future requests. Which one is this statement?
+Ans: Use <database_name>
+7.       Which statement queries an influx database for measurement "cpu" with projection to fields "host", "region" and "value"?
+ANS: select host,region,value from cpu
+8.       Which storage engine use InfluxDB?
+Ans: TSM (Time-Structured Merge Tree)
+9.       Which command may be used in a Linux shell to show the InfluxDB configuration variables?
+Ans: influxd config
+10.   Suppose you are using InfluxDB CLI and you changed already to database "telegraf". Which command may now be used to display a list of all measurements?
+Ans: show measurements
+11.   Suppose you are using InfluxDB CLI and you changed already to database "telegraf". Which command may now be used to display a list of the first three lines of measurement "runtime"?
+Select * from runtime limit 3
+ 
+12.   Suppose you are using InfluxDB market. Create all necessary InfluxDB statements in order to return all tickers when high is lower than 150 and ticker is GPLL from database marketing. The output should be limited to three points. Statement 1: [[1]] [[2]] Statement 2: [[3]]* [[4]] [[5]] [[6]] [[7]] = [[8]] [[9]] high [[10]] 150 LIMIT 3;
+Ans STATEMENT 1: use market
+Ans STATEMENT 2: select * from tickers where ticker =’GPLL’ and high<150 limit 3
+ 
+ 
+13.   Suppose you are using InfluxDB market. Create an InfluxDB statement that returns all tickers' first, average and highest volume (in this given order) from October 1st between 8 and 11 AM. The output should be grouped by ticker. SELECT [[1]] [[2]] [[3]] FROM tickers WHERE time <= [[4]] AND time [[5]] [[6]] [[7]] [[8]]; Drag the words, operators, constants and components that build the solution and drop them at the right place:
+Ans: select first(volume),mean(volume),top(volume) from tickers
+            	where time <=’2017 10 01T11’ and time >=’2017 10 01T08’ group by ticker
+ 
+ 
+14.   To insert a single time series data point into InfluxDB using the CLI, use INSERT followed by a point. Give the statement that inserts in measurement "cpu" value 0.64, tag server set to "hostA", tag region set to "Europe" field processes set to 345 and field memory set to 112.
+Ans: INSERT cpu,server=hostA,region=Europe value=0.64,processes=345,memory=112
+15.   Which RFC describes the timestamp format use in InfluxDB? Hint: Only the four digit integer number is asked for.
+Ans: 3339
+16.   What is the default precision for inserting data into influxdb?
+Ans: ns (nanoseconds)
+17.   Which unix command opens the influxdb CLI with timestamp precision set to seconds?
+Ans: influx -precision s
+18.   Which statement queries an influx database for measurement "ec2" with projection to fields "dep", "region", "continent" and "cpu"?
+Ans: select dep, region, continent, cpu from ec2
+19.   Suppose you are using InfluxDB CLI and you changed already to database "measures". Which command may now be used to display a list of the first five lines of measurement "voltage"?
+Ans: Select * from voltage limit 5
+ 
+ 
+ 
+
+
