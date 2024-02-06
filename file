@@ -1,0 +1,127 @@
+Which roles may be used to administrate MongoDB databases.
+- [x] dbOwner
+- [x] dbAdmin
+
+What is the full path to the Redis system configuration file on a Ubuntu 16.04 system?
+Hint: Your answer starts with the directory path and ends with the configuration filename, e.g. /var/lib/REDIS.ofg**
+
+Ans: installdir/redis/etc/redis. conf.
+
+Which statement may be used to display all existing influx databases within the influx CLI ?**
+Answer: SHOW DATABASES
+
+Suppose you are using InfluxDB market. Create all necessary InfluxDB statements in order to return all tickers when high is lower than 150 and ticker is GPPL from database marketing. The output should be limited to three points.**
+USE market
+SELECT * FROM tickers WHERE ticker = 'GPPL' AND high < 150 LIMIT 3;
+
+What must the projection part of an InfluxDB select statement look like, if you want to display all fields but no tags of a given measurement regardless of the where clause ?**
+
+Answer: SELECT *::field FROM tickers; 
+
+Which correspondences are true?<br/>
+
+- [x] A row within a RDBMS databases' table corresponds to a MongoDB document.
+- [ ] A table within a MongoDB database corresponds to a RDBMS transaction.
+
+Suppose you are using InfluDB CLI and you changed already to database "telegraf". Which command may now be used to display a list of the first three lines of measurement "runtime" 
+Answer: Select * from runtime limit 3;
+
+In MongoDB collection "phonenumbers" phone numbers are stored without area code in field
+"phonenumber". Which command can be used to display all phone numbers ending on "50" in descending order? Complete the following template.
+ 
+db.phonenumbers. find(
+	{ phonenumber:/50$/}
+).sort({"phonenumber": -1 })
+```
+
+With which REDIS command ends a REDIS transaction?**
+Answer: EXEC
+
+You are connected to a kedis server. How can you store the key value pairs K1 / vl and ke / vz at once?**
+
+Answer: MSET k1 v1 k2 v2
+
+MongoDB collection "films" holds a couple documents with fields "title", "actors" und "_id". You need all documents showing only fields "title" and "actors". What is the command to show this list?**
+
+Answer: db.films.find(0,{title:1,actors:1,_id:0}); Next
+
+On which system database a MongoDB operator needs access, if she/he has to backup all MongoDB databases including users and user-defined roles?**
+
+Answer: admin
+
+In your REDIS datastore you have to set key "myKey" to value "25". How can we do that?**
+Answer: SET myKey 25
+
+Which storage engine use InfluxDB ?**
+Answer: Time Structured Merge Tree storage engine
+
+Within a MongoDB find command we need to start the result list with document number 31. Which MongoDB method call could be used to achieve this?
+{<key>:{$gte:31}}
+
+You are connected to a Redis server. How can you store the list elements L1 and L2 at once in list myList?**
+Answer: RPUSH myList L1 L2
+Alternative Ans: LPUSH myList L1 L2
+```
+
+What is the command to create an alphabetically descending index over field "title" within a MongoDB collection named "books"?**
+Answer: db.books.find(0, "title":1,_id:0}).sort({"title": 1})
+```
+
+**Q18: What is the command to show a list of all MongoDB databases?**
+Answer: show dbs
+
+**Q19: How scale MongoDB datastores?
+Select one:**
+
+- [x] horizontal scaling
+
+**Q20: What is the command to show a list of all MongoDB documents within a collection named "books" that show in field "likes" an integer value inferior to 50?**
+Answer: db.books.find({"likes":{$lte:50}})
+
+How scale Redis datastores?
+Ans: vertical scaling
+
+Within a REDIS datastore sets A and B are stored. Which REDIS command can be used to store the union of A and B in set C ?
+Ans: SUNIONSTORE
+
+In your REDIS server you want to add elements "A" and "B" to set "letters". Give an appropriate REDIS command.
+Ans: SADD letters A B
+
+A MongoDB operator has to restore a backup of collection "myCol" in database "targetDB" from a dump in directory dump. Which command does the job?
+Ans: mongorestore --collection mycol --db targetDB dump/oldDBdump
+
+Given is a sorted set representing a geospatial index in a REDIS datastore, populated using the following GEOADD command:
+GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
+Which command returns the distance between "Palermo" and "Catania" in units of "km" ?
+ANS:GEODIST Palermo Catania km
+
+Which REDIS command can be used to increment key "numberOfStudents" by 1?
+Ans: INCR numberOfStudents
+
+Which steps are necessary to create a new persistent MongoDB database named "db2018"?
+Ans:Change to the database using command "use db2018"
+Insert one document in a collection using command "db. COLLECTION_NAME.insert(document)"
+
+A REDIS datastore is inappropriate for message broker applications.
+Ans:false
+
+Which command can be used to start the redis client on port 9900?
+Ans: redis-cli -p 9900 ping
+
+In MongoDB collection "phonenumbers" phone numbers are stored without area code in field "phonenumber". Which command can be used to display all phone numbers that start with digits 21, followed by an arbitrary number of digits and ending in digit 9?
+Ans: db.phonenumbers.find{phonenumber:/^21(•*)9$/})
+
+What is the command to change the title of a MongoDB document within a collection from "Doc1" to "newDoc"?
+Ans: db.col.update(['title': 'Doc1"}, {Sset: ('title':'newDoc'}})
+
+In a REDIS datastore, how can one increment key "mykey" by 5 ?
+Ans: INCRBY myKey 5
+
+Which command may be used in a Linux shell to show the InfluxDB configuration variables ?
+Ans: influxd config/etc/influxdb/influxdb.conf.
+
+To insert a single time series data point into InfluxDB using the CLI, use INSERT followed by a point. Give the statement that inserts in measurement "cpu" value 0.64, tag server set to "hostA", tag region set to "Europe", field processes set to 345 and field memory set to 112.
+Ans: INSERT cou,server=hostA,region=Europe value=0.64,field_process=345,field_memory=112
+
+Which unix command opens the influxdb CLI with timestamp precision set to seconds ?
+Ans: influx —precision s
